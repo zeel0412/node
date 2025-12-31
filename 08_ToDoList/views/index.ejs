@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Student Form</title>
+  </head>
+  <body>
+    <h2>hello world</h2>
+
+    <form action="/insertData" method="POST">
+      <input type="number" name="id" placeholder="Enter ID" required />
+      <input type="text" name="name" placeholder="Enter Name" required />
+      <button type="submit">Add</button>
+    </form>
+
+    <hr />
+
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Action</th>
+      </tr>
+
+      <% student.forEach((el) => { %>
+      <tr>
+        <td><%= el.id %></td>
+        <td><%= el.name %></td>
+        <td>
+          <a href="/edit/<%= el.id %>">Edit</a>
+          <a href="/delete?id=<%= el.id %>">Delete</a>
+        </td>
+      </tr>
+      <% }) %>
+    </table>
+  </body>
+</html>
