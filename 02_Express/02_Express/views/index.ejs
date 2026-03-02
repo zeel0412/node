@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student CRUD</title>
+</head>
+<body>
+
+<h1>Student CRUD App</h1>
+
+<form action="<%= editValue && editValue.id ? '/updateData' : '/insertData' %>" method="POST">
+
+  <input type="number" name="id" placeholder="Enter ID"
+         value="<%= editValue && editValue.id ? editValue.id : '' %>"
+         <%= editValue && editValue.id ? 'readonly' : '' %> required>
+
+  <input type="text" name="name" placeholder="Enter Name"
+         value="<%= editValue && editValue.name ? editValue.name : '' %>" required>
+
+  <button type="submit" style="padding:6px 15px;background:black;color:white;border-radius:8px;">
+    <%= editValue && editValue.id ? 'Update Student' : 'Add Student' %>
+  </button>
+
+</form>
+
+<br>
+
+<table border="1" cellpadding="10">
+<tr>
+  <th>ID</th><th>Name</th><th>Action</th>
+</tr>
+
+<% student.forEach(stu => { %>
+<tr>
+  <td><%= stu.id %></td>
+  <td><%= stu.name %></td>
+  <td>
+    <a href="/edit?id=<%= stu.id %>">Edit</a> |
+    <a href="/delete?id=<%= stu.id %>">Delete</a>
+  </td>
+</tr>
+<% }) %>
+
+</table>
+
+</body>
+</html>
