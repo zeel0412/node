@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <form action="/insert" method="post" enctype="multipart/form-data">
+      <input
+        type="text"
+        placeholder="enter name"
+        id="username"
+        name="username"
+      />
+      <input type="text" placeholder="password" id="password" name="password" />
+      <input type="file" name="image" id="name" />
+      <input type="submit" />
+    </form>
+
+    <table>
+      <tr>
+        <th>name</th>
+        <th>password</th>
+        <th>image</th>
+      </tr>
+
+      <% data.map((el,i)=>{%>
+      <tr>
+        <td><%= el.username %></td>
+        <td><%= el.password %></td>
+        <td>
+          <img
+            style="height: 200px; width: 200"
+            ,
+            src="<%= el.image %>"
+            alt=""
+          />
+        </td>
+      </tr>
+      <%})%>
+    </table>
+  </body>
+</html>
